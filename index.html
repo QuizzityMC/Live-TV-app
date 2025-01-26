@@ -29,19 +29,6 @@
             0% { opacity: 1; }
             100% { opacity: 0; display: none; }
         }
-        .loading {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 2em;
-            z-index: 1;
-        }
         video {
             width: 100%;
             height: 100%;
@@ -52,7 +39,6 @@
 </head>
 <body>
     <div class="start-sequence">ADS Films</div>
-    <div class="loading">Loading...</div>
     <video id="liveVideo" autoplay muted>
         <source src="https://quizzitymc.github.io/ADSFilms-Site/trailers/body_in_night_trailer.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -60,20 +46,14 @@
     <script>
         const video = document.getElementById('liveVideo');
         const startSequence = document.querySelector('.start-sequence');
-        const loading = document.querySelector('.loading');
 
         startSequence.addEventListener('animationend', () => {
             startSequence.style.display = 'none';
-            loading.style.display = 'flex';
+            video.style.display = 'block';
             video.play();
         });
 
-        video.addEventListener('playing', () => {
-            loading.style.display = 'none';
-        });
-
         video.addEventListener('error', (e) => {
-            loading.style.display = 'none';
             console.error('Error loading video:', e);
         });
     </script>
