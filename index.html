@@ -69,14 +69,14 @@
             video.load();
         });
 
-        video.addEventListener('loadedmetadata', () => {
+        video.addEventListener('loadeddata', () => {
             loading.style.display = 'none';
             video.play();
         });
 
-        video.addEventListener('error', () => {
+        video.addEventListener('error', (e) => {
             loading.style.display = 'none';
-            console.error('Error loading video.');
+            console.error('Error loading video:', e);
         });
     </script>
 </body>
