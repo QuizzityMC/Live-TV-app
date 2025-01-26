@@ -46,24 +46,11 @@
             height: 100%;
             object-fit: cover;
         }
-        .no-video {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
-        }
     </style>
 </head>
 <body>
     <div class="start-sequence">ADS Films</div>
     <div class="loading">Loading...</div>
-    <div class="no-video">Livestream unavailable. Please try again later.</div>
     <video id="liveVideo" autoplay>
         <source src="https://quizzitymc.github.io/ADSFilms-Site/trailers/body_in_night_trailer.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -71,7 +58,6 @@
     <script>
         const video = document.getElementById('liveVideo');
         const loading = document.querySelector('.loading');
-        const noVideo = document.querySelector('.no-video');
 
         video.addEventListener('loadstart', () => {
             loading.style.display = 'flex';
@@ -84,7 +70,7 @@
 
         video.addEventListener('error', () => {
             loading.style.display = 'none';
-            noVideo.style.display = 'flex';
+            console.log('Error loading video.');
         });
     </script>
 </body>
